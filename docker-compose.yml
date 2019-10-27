@@ -1,9 +1,9 @@
 # ./docker-compose.yml
 
-version: '3'
+version: "3"
 
 services:
-  db:
+  mysql-server:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: password
@@ -12,11 +12,12 @@ services:
       MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
-  web:
-    image: php:7.2.2-apache
+  web-server:
+    build:
+      context: ./
     container_name: php_web
     depends_on:
-      - db
+      - mysql-server
     volumes:
       - ./src/:/var/www/html/
     ports:
