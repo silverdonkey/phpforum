@@ -1,6 +1,5 @@
-<?php 
+<?php
 
-// Zeigt alle Informationen (Standardwert ist INFO_ALL)
-phpinfo();
-
-?>
+$view = new stdClass();
+$view->pageTitle = 'Homepage';
+require_once('Views/index.phtml');
