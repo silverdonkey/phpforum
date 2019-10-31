@@ -6,6 +6,9 @@ services:
   mysql-server:
     image: mysql:5.7
     container_name: mysql57server
+    volumes:
+      - ./database-init.sql:/docker-entrypoint-initdb.d/database-init.sql:ro
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: forumdb

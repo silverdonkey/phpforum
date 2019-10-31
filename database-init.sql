@@ -31,9 +31,10 @@ CREATE TABLE IF NOT EXISTS `post` (
 -- Dumping data for table `joke`
 --
 
-LOCK TABLES `joke` WRITE;
-/*!40000 ALTER TABLE `joke` DISABLE KEYS */;
-INSERT INTO `joke` VALUES (1,'!false - it\'s funny because it\'s true'),
-(2,'Why was the empty array locked outside? It didn\'t have any keys');
-/*!40000 ALTER TABLE `joke` ENABLE KEYS */;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1, 'test01@web.de', 'Max', 'Mustermann'),
+                          (2, 'test02@web.de', 'John', 'Doh'),
+                          (3, 'test03@web.de', 'Doris', 'Schroeder');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
