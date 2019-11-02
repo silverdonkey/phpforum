@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `post` (
 )  ENGINE=INNODB; -- AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `joke`
+-- Dumping data for tables `user` and `post`
 --
 
 LOCK TABLES `user` WRITE;
@@ -37,4 +37,11 @@ INSERT INTO `user` VALUES (1, 'test01@web.de', 'Max', 'Mustermann'),
                           (2, 'test02@web.de', 'John', 'Doh'),
                           (3, 'test03@web.de', 'Doris', 'Schroeder');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+LOCK TABLES `post` WRITE;
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
+INSERT INTO `post` VALUES (1, '1 Post', 'Post content. More text.', 1),
+                          (2, '2 Post', 'Second Post content. More text.', 2),
+                          (3, '3 Post', 'Post content 3. More text.', 2);
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
 UNLOCK TABLES;

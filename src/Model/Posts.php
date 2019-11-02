@@ -42,19 +42,19 @@ class Posts
   {
     $parameters = [];
     if ($this->sort == 'newest') {
-      $order = ' ORDER BY id DESC';
+      $order = ' ORDER BY p.id DESC';
     } else if ($this->sort == 'oldest') {
-      $order = ' ORDER BY id ASC';
+      $order = ' ORDER BY p.id ASC';
     } else {
       $order = '';
     }
     if ($this->keyword) {
-      $where = ' WHERE text LIKE :text';
+      $where = ' WHERE content LIKE :text';
       $parameters['text'] = '%' . $this->keyword . '%';
     } else {
       $where = '';
     }
-    $stmt = $this->pdo->prepare('SELECT * FROM post ' . $where . $order);
+    $stmt = $this->pdo->prepare('SELECT p.id, p.subject, p.content, u.first_name, u.last_name FROM post p JOIN user u ON p.user_id = u.id' . $where . $order);
     $stmt->execute($parameters);
     return $stmt->fetchAll();
   }
